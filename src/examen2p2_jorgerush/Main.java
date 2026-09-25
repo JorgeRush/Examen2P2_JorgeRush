@@ -62,14 +62,14 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Torneo = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         Versus = new javax.swing.JPanel();
         luchador1 = new javax.swing.JComboBox<>();
         luchador2 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        golpe = new javax.swing.JButton();
-        golpe2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         mostrar = new javax.swing.JPanel();
@@ -77,10 +77,14 @@ public class Main extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         combo2 = new javax.swing.JComboBox<>();
         h2 = new javax.swing.JButton();
+        golpe2 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         combo1 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         Jugador2 = new javax.swing.JPanel();
         h1 = new javax.swing.JButton();
+        golpe = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         VerReino = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -115,15 +119,33 @@ public class Main extends javax.swing.JFrame {
 
         Torneo.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/examen2p2_jorgerush/images.jpg"))); // NOI18N
+        jLabel15.setText("jLabel15");
+
+        jLabel16.setText("67");
+
         javax.swing.GroupLayout TorneoLayout = new javax.swing.GroupLayout(Torneo);
         Torneo.setLayout(TorneoLayout);
         TorneoLayout.setHorizontalGroup(
             TorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGroup(TorneoLayout.createSequentialGroup()
+                .addGroup(TorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TorneoLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(TorneoLayout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         TorneoLayout.setVerticalGroup(
             TorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGroup(TorneoLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel16)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         jPanel1.add(Torneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
@@ -151,12 +173,6 @@ public class Main extends javax.swing.JFrame {
         });
         Versus.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 121, -1, -1));
 
-        golpe.setText("Golpe");
-        Versus.add(golpe, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 227, -1, -1));
-
-        golpe2.setText("Golpe");
-        Versus.add(golpe2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
-
         jLabel11.setText("Habilidades");
         Versus.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 304, -1, -1));
 
@@ -172,6 +188,10 @@ public class Main extends javax.swing.JFrame {
 
         h2.setText("Usar Habilidad");
 
+        golpe2.setText("Golpe");
+
+        jLabel14.setText("jLabel13");
+
         javax.swing.GroupLayout Jugador1Layout = new javax.swing.GroupLayout(Jugador1);
         Jugador1.setLayout(Jugador1Layout);
         Jugador1Layout.setHorizontalGroup(
@@ -180,21 +200,29 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(Jugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador1Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))
+                        .addComponent(h2)
+                        .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador1Layout.createSequentialGroup()
-                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Jugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(golpe2)
+                            .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador1Layout.createSequentialGroup()
-                        .addComponent(h2)
-                        .addGap(23, 23, 23))))
+                        .addGroup(Jugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62))))
         );
         Jugador1Layout.setVerticalGroup(
             Jugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Jugador1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addGap(11, 11, 11)
+                .addComponent(golpe2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(h2)
@@ -211,6 +239,10 @@ public class Main extends javax.swing.JFrame {
 
         h1.setText("Usar Habilidad");
 
+        golpe.setText("Golpe");
+
+        jLabel13.setText("jLabel13");
+
         javax.swing.GroupLayout Jugador2Layout = new javax.swing.GroupLayout(Jugador2);
         Jugador2.setLayout(Jugador2Layout);
         Jugador2Layout.setHorizontalGroup(
@@ -219,11 +251,24 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(h1)
                 .addGap(26, 26, 26))
+            .addGroup(Jugador2Layout.createSequentialGroup()
+                .addGroup(Jugador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Jugador2Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(golpe))
+                    .addGroup(Jugador2Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel13)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Jugador2Layout.setVerticalGroup(
             Jugador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador2Layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(golpe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(h1)
                 .addGap(39, 39, 39))
         );
@@ -298,6 +343,11 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 16, 249, -1));
 
         jButton1.setText("Torneo");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 230, -1));
 
         jButton2.setText("Leer Luchador");
@@ -606,6 +656,8 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        Jugador1(false);
+        Jugador2(false);
         ocultarPantallas(false);
         Versus.setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked
@@ -634,6 +686,11 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
             Jugador2(true);
         }
     }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       ocultarPantallas(false);
+        Torneo.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -689,6 +746,10 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
