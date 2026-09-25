@@ -35,5 +35,11 @@ public class Habilidad {
     public void setDaño(double daño) {
         this.daño = daño;
     }
+
+    @Override
+    public String toString() {
+        return Nombre;
+    }
+    
     
 }

@@ -22,16 +22,16 @@ public class Luchador {
     String Ataque;
     double Velocidad;
     double probabilidad;
-    double  BonoHabilidad;
-    boolean reducirMitad=false;
-    boolean jugabilidad=true;
-    ArrayList<Habilidad> habilidades ;
-    
-    public void añadirHabilidades(Habilidad habilidad){
+    double BonoHabilidad;
+    boolean reducirMitad = false;
+    boolean jugabilidad = true;
+    ArrayList<Habilidad> habilidades;
+
+    public void añadirHabilidades(Habilidad habilidad) {
         habilidades.add(habilidad);
     }
 
-    public Luchador( String Reino,String Nombre, double Vida, String Ataque, double Velocidad, double probabilidad, double BonoHabilidad) {
+    public Luchador(String Reino, String Nombre, double Vida, String Ataque, double Velocidad, double probabilidad, double BonoHabilidad) {
         this.Nombre = Nombre;
         this.Reino = Reino;
         this.Vida = Vida;
@@ -123,32 +123,59 @@ public class Luchador {
         } else {
             elegido = 1;
         }
-        double daño=(dañoHabilidad*elegido)*0.5;
+        double daño = (dañoHabilidad * elegido) * 0.5;
         return daño;
     }
-    public double LanzarHabilidad (String estado,double bonoHabilidad,double daño){
-        double dañoCausado=0;
-        boolean verf=false;
-        if(estado.equals("Quemadura")){
-            verf=true;
-            dañoCausado=((daño/70)*25)/3;
-        }else if (estado.equals("Congelado")){
-            reducirMitad=true;
-        }else if(estado.equals("Aturdido")){
-            jugabilidad=false;
+
+    public double LanzarHabilidad(String estado, double bonoHabilidad, double daño) {
+        double dañoCausado = 0;
+        boolean verf = false;
+        if (estado.equals("Quemadura")) {
+            verf = true;
+            dañoCausado = ((daño / 70) * 25) / 3;
+        } else if (estado.equals("Congelado")) {
+            reducirMitad = true;
+        } else if (estado.equals("Aturdido")) {
+            jugabilidad = false;
         }
-        
-        if(verf==true){
+
+        if (verf == true) {
             return dañoCausado;
-        }else{
+        } else {
             return -1;
         }
-        
+
     }
 
     @Override
     public String toString() {
         return Nombre;
-    
+
+    }
+
+    public String toString2() {
+
+        String mensaje = "Nombre: " + Nombre + "\n"
+                + "Reino: " + Reino + "\n"
+                + "Vida: " + Vida + "\n"
+                + "Ataque: " + Ataque + "\n"
+                + "Velocidad: " + Velocidad + "\n"
+                + "Probabilidad: " + probabilidad + "\n"
+                + "Bono de Habilidad: " + BonoHabilidad + "\n"
+                + "Jugabilidad: " + jugabilidad + "\n"
+                + "Probabilidad reducida" + reducirMitad;
+        
+        if (habilidades.isEmpty()==false){
+            mensaje+="\n\n Habilidades: \n";
+            for (int i = 0; i < habilidades.size(); i++) {
+                mensaje+= i+". "+habilidades.toString();
+            }
+                    
+        }else{
+            mensaje+="No tiene ninguna habilidad.";
+        }
+        
+        return mensaje;
+
     }
 }

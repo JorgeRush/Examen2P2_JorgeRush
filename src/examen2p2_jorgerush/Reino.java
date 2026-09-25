@@ -35,5 +35,20 @@ public class Reino {
     public void setLuchadores(ArrayList<Luchador> Luchadores) {
         this.Luchadores = Luchadores;
     }
+
+    @Override
+    public String toString() {
+        int contador=0;
+        String LuchaU="";
+        for (int i = 0; i < Luchadores.size(); i++) {
+            contador++;
+            LuchaU+="\n"+i+" ."+Luchadores.get(i).getNombre();
+        }
+        
+        
+        return "---- REINO "+Nombre+" ----\n"+
+                "Numero de luchadores: "+contador+"\n"+
+                "Luchadores: \n"+LuchaU;
+    }
     
 }

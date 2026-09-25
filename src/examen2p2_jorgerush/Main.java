@@ -16,6 +16,7 @@ import static javax.swing.JFileChooser.APPROVE_OPTION;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 
 /**
  *
@@ -63,7 +64,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         arbolReinos = new javax.swing.JTree();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        verInfo = new javax.swing.JTextArea();
         jButton7 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -131,11 +132,17 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(arbolReinos);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        verInfo.setEditable(false);
+        verInfo.setColumns(20);
+        verInfo.setRows(5);
+        jScrollPane2.setViewportView(verInfo);
 
         jButton7.setText("Ver");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout VerReinoLayout = new javax.swing.GroupLayout(VerReino);
         VerReino.setLayout(VerReinoLayout);
@@ -289,7 +296,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 ArrayList<Luchador> luchadores = new ArrayList<>();
     ArrayList<Reino> Reinos = new ArrayList<>();
-    int contador=-1;
+    int contador = -1;
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         JFileChooser archivo = new JFileChooser();
         int opcion = archivo.showOpenDialog(this);
@@ -316,7 +323,7 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                     for (int i = 0; i < Reinos.size(); i++) {
 
                         if (Reinos.get(i).getNombre().equals(datos[0])) {
-                            System.out.println("Reino encontrado: " + Reinos.get(i).getNombre());
+
                             verfReino = true;
                             Reino reinoElegido = Reinos.get(i);
                             ArrayList<Luchador> luchadores = reinoElegido.getLuchadores();
@@ -331,8 +338,7 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
 
                             if (evitarRep == false) {
                                 reinoElegido.añadirLuchadores(nuevoLuchador);
-                                System.out.println("Luchador por añadir: " + nuevoLuchador.getNombre());
-                              
+
                                 DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
                                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
 
@@ -358,7 +364,7 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                         Reino nuevoReino = new Reino(datos[0]);
                         Reinos.add(nuevoReino);
                         contador++;
-                        System.out.println("Creacion de nuevo:"+nuevoReino);
+
                         nuevoReino.añadirLuchadores(nuevoLuchador);
                         Reinos.add(nuevoReino);
                         System.out.println(nuevoReino.Nombre);
@@ -407,6 +413,22 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
             Habilidad nuevaHabilidad = new Habilidad(nombreN, dañoF, estado);
             Luchador luchador = (Luchador) luchadorElegido;
             luchador.añadirHabilidades(nuevaHabilidad);
+            DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+
+            int cantidad = raiz.getChildCount();
+            for (int i = 0; i < cantidad; i++) {
+                DefaultMutableTreeNode nodoExistente = (DefaultMutableTreeNode) raiz.getChildAt(i);
+                int cantidadF = nodoExistente.getChildCount();
+                for (int j = 0; j < cantidadF; j++) {
+                    DefaultMutableTreeNode nodoLuchador = (DefaultMutableTreeNode) nodoExistente.getChildAt(i);
+                    if (nodoLuchador.toString().equals(luchador.getNombre())) {
+                        DefaultMutableTreeNode nodoHabilidad = new DefaultMutableTreeNode(nuevaHabilidad);
+                    }
+
+                }
+
+            }
             JOptionPane.showMessageDialog(this, "Habilidad exitosamente añadida");
             return;
         }
@@ -424,14 +446,25 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void arbolReinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arbolReinosMouseClicked
-        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) arbolReinos.getSelectionPath().getLastPathComponent();
-        Object eleccion = nodoSeleccionado.getUserObject();
-        if (eleccion instanceof Reino) {
-
-        }
 
 
     }//GEN-LAST:event_arbolReinosMouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) arbolReinos.getSelectionPath().getLastPathComponent();
+        Object eleccion = nodoSeleccionado.getUserObject();
+        if (eleccion instanceof Reino) {
+            Reino reinoEleg = (Reino) eleccion;
+            verInfo.setText(reinoEleg.toString());
+        } else if (eleccion instanceof Luchador) {
+            Luchador luchaEleg = (Luchador) eleccion;
+            verInfo.setText(luchaEleg.toString2());
+        } else if (eleccion instanceof Habilidad) {
+            Habilidad habiliEleg = (Habilidad) eleccion;
+            verInfo.setText(habiliEleg.toString());
+
+        }
+    }//GEN-LAST:event_jButton7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -484,7 +517,7 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nombre;
+    private javax.swing.JTextArea verInfo;
     // End of variables declaration//GEN-END:variables
 }
