@@ -9,5 +9,5 @@ package examen2p2_jorgerush;
  * @author Jorge Rush
  */
 public enum EfectoEstado {
-    
+    Quemadura,Congelado,Aturdido,
 }

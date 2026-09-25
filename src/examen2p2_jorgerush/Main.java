@@ -4,12 +4,21 @@
  */
 package examen2p2_jorgerush;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import static javax.swing.JFileChooser.APPROVE_OPTION;
+
 /**
  *
  * @author Jorge Rush
  */
 public class Main extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Main.class.getName());
 
     /**
@@ -35,6 +44,8 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        LeerLuchador = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -48,10 +59,15 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/examen2p2_jorgerush/logoMK-1.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 16, 249, -1));
 
-        jButton1.setText("jButton1");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 230, -1));
+        jButton1.setText("Torneo");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 230, -1));
 
         jButton2.setText("Leer Luchador");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 230, -1));
 
         jButton3.setText("Crear Habilidad");
@@ -60,12 +76,56 @@ public class Main extends javax.swing.JFrame {
         jButton4.setText("Ver Reino");
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 230, -1));
 
+        jButton5.setText("1vs1");
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 230, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+
+        LeerLuchador.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout LeerLuchadorLayout = new javax.swing.GroupLayout(LeerLuchador);
+        LeerLuchador.setLayout(LeerLuchadorLayout);
+        LeerLuchadorLayout.setHorizontalGroup(
+            LeerLuchadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+        LeerLuchadorLayout.setVerticalGroup(
+            LeerLuchadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(LeerLuchador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        JFileChooser archivo = new JFileChooser();
+        int opcion = archivo.showOpenDialog(this);
+        if (opcion == APPROVE_OPTION) {
+            File Archivo= archivo.getSelectedFile();
+            FileReader leerArchivo;
+            try {
+                leerArchivo = new FileReader(Archivo);
+                BufferedReader lectura=new BufferedReader(leerArchivo);
+                String linea= lectura.readLine();
+                do{
+                    String []datos=linea.split(",");
+                    
+                }while(linea!=null);
+            } catch (FileNotFoundException ex) {
+                System.getLogger(Main.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            } catch (IOException ex) {
+                System.getLogger(Main.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+           
+            
+
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+ArrayList <Luchador> luchadores= new ArrayList<>();
 
     /**
      * @param args the command line arguments
@@ -93,10 +153,12 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel LeerLuchador;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

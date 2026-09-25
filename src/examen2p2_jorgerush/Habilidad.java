@@ -10,6 +10,6 @@ package examen2p2_jorgerush;
  */
 public class Habilidad {
     String Nombre;
-    int daño;
+    double daño;
     
 }
