@@ -10,8 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,6 +28,8 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        DefaultComboBoxModel modeloCombo=new DefaultComboBoxModel();
+        ComboLuchadores.setModel(modeloCombo);
     }
 
     /**
@@ -45,7 +49,16 @@ public class Main extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        LeerLuchador = new javax.swing.JPanel();
+        CrearHabilidad = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        ComboLuchadores = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        daño = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        comboEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -71,6 +84,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 230, -1));
 
         jButton3.setText("Crear Habilidad");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 230, -1));
 
         jButton4.setText("Ver Reino");
@@ -81,51 +95,141 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
 
-        LeerLuchador.setBackground(new java.awt.Color(255, 255, 255));
+        CrearHabilidad.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout LeerLuchadorLayout = new javax.swing.GroupLayout(LeerLuchador);
-        LeerLuchador.setLayout(LeerLuchadorLayout);
-        LeerLuchadorLayout.setHorizontalGroup(
-            LeerLuchadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+        jLabel2.setText("Luchador");
+
+        ComboLuchadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Nombre:");
+
+        jLabel4.setText("Daño:");
+
+        jLabel5.setText("Efecto:");
+
+        jButton6.setText("Crear");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quemadura", "Congelado", "Arturdido" }));
+
+        javax.swing.GroupLayout CrearHabilidadLayout = new javax.swing.GroupLayout(CrearHabilidad);
+        CrearHabilidad.setLayout(CrearHabilidadLayout);
+        CrearHabilidadLayout.setHorizontalGroup(
+            CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearHabilidadLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ComboLuchadores, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(comboEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(daño, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
+                .addGap(0, 173, Short.MAX_VALUE))
+            .addGroup(CrearHabilidadLayout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearHabilidadLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(210, 210, 210))
         );
-        LeerLuchadorLayout.setVerticalGroup(
-            LeerLuchadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+        CrearHabilidadLayout.setVerticalGroup(
+            CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearHabilidadLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ComboLuchadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(daño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jButton6)
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
-        jPanel1.add(LeerLuchador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
+        jPanel1.add(CrearHabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ArrayList<Luchador> luchadores = new ArrayList<>();
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         JFileChooser archivo = new JFileChooser();
         int opcion = archivo.showOpenDialog(this);
         if (opcion == APPROVE_OPTION) {
-            File Archivo= archivo.getSelectedFile();
+            File Archivo = archivo.getSelectedFile();
             FileReader leerArchivo;
             try {
                 leerArchivo = new FileReader(Archivo);
-                BufferedReader lectura=new BufferedReader(leerArchivo);
-                String linea= lectura.readLine();
-                do{
-                    String []datos=linea.split(",");
-                    
-                }while(linea!=null);
+                BufferedReader lectura = new BufferedReader(leerArchivo);
+                String linea = lectura.readLine();
+                do {
+                    String[] datos = linea.split(";");
+                    double vida=Double.parseDouble(datos[2]);
+                    double velocidad=Double.parseDouble(datos[4]);
+                    double probabilidad=Double.parseDouble(datos[5]);
+                    double bonoHabilidad=Double.parseDouble(datos[6]);
+                    Luchador nuevoLuchador=new Luchador (datos[0],datos[1],vida,datos[3],velocidad,probabilidad,bonoHabilidad);
+                    luchadores.add(nuevoLuchador);
+                     DefaultComboBoxModel modeloCombo=(DefaultComboBoxModel)ComboLuchadores.getModel();
+                     modeloCombo.addElement(nuevoLuchador);
+                    linea=lectura.readLine();
+                } while (linea != null);
             } catch (FileNotFoundException ex) {
                 System.getLogger(Main.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             } catch (IOException ex) {
                 System.getLogger(Main.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             }
-           
-            
 
         }
     }//GEN-LAST:event_jButton2MouseClicked
-ArrayList <Luchador> luchadores= new ArrayList<>();
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        String nombreN=nombre.getText();
+        String dañoN=daño.getText();
+        if(nombreN.isEmpty()||dañoN.isEmpty()){
+            JOptionPane.showMessageDialog(this,"No puede dejar nada en blanco");
+            return;
+        }
+        
+        double dañoF=Double.parseDouble(dañoN);
+        String estado=(String)comboEstado.getSelectedItem();
+        
+        
+        Object luchadorElegido=ComboLuchadores.getSelectedItem();
+        if(luchadorElegido instanceof Luchador){
+            Habilidad nuevaHabilidad= new Habilidad(nombreN,dañoF,estado);
+            Luchador luchador=(Luchador)luchadorElegido;
+            luchador.añadirHabilidades(nuevaHabilidad);
+            JOptionPane.showMessageDialog(this,"Habilidad exitosamente añadida");
+            return;
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -153,14 +257,23 @@ ArrayList <Luchador> luchadores= new ArrayList<>();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel LeerLuchador;
+    private javax.swing.JComboBox<String> ComboLuchadores;
+    private javax.swing.JPanel CrearHabilidad;
+    private javax.swing.JComboBox<String> comboEstado;
+    private javax.swing.JTextField daño;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField nombre;
     // End of variables declaration//GEN-END:variables
 }

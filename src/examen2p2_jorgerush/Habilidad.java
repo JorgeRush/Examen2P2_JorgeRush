@@ -11,5 +11,29 @@ package examen2p2_jorgerush;
 public class Habilidad {
     String Nombre;
     double daño;
+    String efectoEstado;
+
+    public Habilidad(String Nombre, double daño, String efectoEstado) {
+        this.Nombre = Nombre;
+        this.daño = daño;
+        this.efectoEstado = efectoEstado;
+    }
+    
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public double getDaño() {
+        return daño;
+    }
+
+    public void setDaño(double daño) {
+        this.daño = daño;
+    }
     
 }

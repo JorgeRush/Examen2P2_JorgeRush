@@ -25,7 +25,22 @@ public class Luchador {
     double  BonoHabilidad;
     boolean reducirMitad=false;
     boolean jugabilidad=true;
-    ArrayList<Habilidad> habilidades = new ArrayList<>();
+    ArrayList<Habilidad> habilidades ;
+    
+    public void añadirHabilidades(Habilidad habilidad){
+        habilidades.add(habilidad);
+    }
+
+    public Luchador( String Reino,String Nombre, double Vida, String Ataque, double Velocidad, double probabilidad, double BonoHabilidad) {
+        this.Nombre = Nombre;
+        this.Reino = Reino;
+        this.Vida = Vida;
+        this.Ataque = Ataque;
+        this.Velocidad = Velocidad;
+        this.probabilidad = probabilidad;
+        this.BonoHabilidad = BonoHabilidad;
+        habilidades = new ArrayList<>();
+    }
 
     public String getNombre() {
         return Nombre;
@@ -111,15 +126,15 @@ public class Luchador {
         double daño=(dañoHabilidad*elegido)*0.5;
         return daño;
     }
-    public double LanzarHabilidad (Enum estado,double bonoHabilidad,double daño){
+    public double LanzarHabilidad (String estado,double bonoHabilidad,double daño){
         double dañoCausado=0;
         boolean verf=false;
-        if(estado==Quemadura){
+        if(estado.equals("Quemadura")){
             verf=true;
             dañoCausado=((daño/70)*25)/3;
-        }else if (estado==Congelado){
+        }else if (estado.equals("Congelado")){
             reducirMitad=true;
-        }else if(estado==Aturdido){
+        }else if(estado.equals("Aturdido")){
             jugabilidad=false;
         }
         
@@ -130,6 +145,10 @@ public class Luchador {
         }
         
     }
-    
 
+    @Override
+    public String toString() {
+        return Nombre;
+    
+    }
 }

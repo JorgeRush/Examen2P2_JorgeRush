@@ -13,5 +13,21 @@ import java.util.ArrayList;
 public class Reino {
     String Nombre;
     ArrayList <Luchador> Luchadores;
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public ArrayList<Luchador> getLuchadores() {
+        return Luchadores;
+    }
+
+    public void setLuchadores(ArrayList<Luchador> Luchadores) {
+        this.Luchadores = Luchadores;
+    }
     
 }
