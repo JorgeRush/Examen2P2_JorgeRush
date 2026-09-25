@@ -38,7 +38,8 @@ public class Habilidad {
 
     @Override
     public String toString() {
-        return Nombre;
+        return "Nombre: "+Nombre+"\n"+
+                "Daño: "+daño;
     }
     
     

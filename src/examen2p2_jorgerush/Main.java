@@ -33,6 +33,10 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
         ComboLuchadores.setModel(modeloCombo);
+        luchador1.setModel(modeloCombo);
+        luchador2.setModel(modeloCombo);
+        
+
         ocultarPantallas(false);
         DefaultMutableTreeNode reino = new DefaultMutableTreeNode("Reinos");
 
@@ -59,6 +63,24 @@ public class Main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Torneo = new javax.swing.JPanel();
         Versus = new javax.swing.JPanel();
+        luchador1 = new javax.swing.JComboBox<>();
+        luchador2 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        golpe = new javax.swing.JButton();
+        golpe2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        mostrar = new javax.swing.JPanel();
+        Jugador1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        combo2 = new javax.swing.JComboBox<>();
+        h2 = new javax.swing.JButton();
+        combo1 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        Jugador2 = new javax.swing.JPanel();
+        h1 = new javax.swing.JButton();
         VerReino = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,17 +129,108 @@ public class Main extends javax.swing.JFrame {
         jPanel1.add(Torneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
 
         Versus.setBackground(new java.awt.Color(255, 255, 255));
+        Versus.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout VersusLayout = new javax.swing.GroupLayout(Versus);
-        Versus.setLayout(VersusLayout);
-        VersusLayout.setHorizontalGroup(
-            VersusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+        luchador1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Versus.add(luchador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 60, 134, -1));
+
+        luchador2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Versus.add(luchador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 134, -1));
+
+        jLabel7.setText("Luchador 1");
+        Versus.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 32, -1, -1));
+
+        jLabel8.setText("Luchador 2");
+        Versus.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 32, -1, -1));
+
+        jButton8.setText("Fijar Luchadores");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+        Versus.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 121, -1, -1));
+
+        golpe.setText("Golpe");
+        Versus.add(golpe, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 227, -1, -1));
+
+        golpe2.setText("Golpe");
+        Versus.add(golpe2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+
+        jLabel11.setText("Habilidades");
+        Versus.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 304, -1, -1));
+
+        jLabel12.setText("Habilidades");
+        Versus.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 304, -1, -1));
+
+        mostrar.setBackground(new java.awt.Color(255, 255, 255));
+        mostrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setText("Vida:");
+
+        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        h2.setText("Usar Habilidad");
+
+        javax.swing.GroupLayout Jugador1Layout = new javax.swing.GroupLayout(Jugador1);
+        Jugador1.setLayout(Jugador1Layout);
+        Jugador1Layout.setHorizontalGroup(
+            Jugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jugador1Layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(Jugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador1Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador1Layout.createSequentialGroup()
+                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador1Layout.createSequentialGroup()
+                        .addComponent(h2)
+                        .addGap(23, 23, 23))))
         );
-        VersusLayout.setVerticalGroup(
-            VersusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+        Jugador1Layout.setVerticalGroup(
+            Jugador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jugador1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(h2)
+                .addGap(43, 43, 43))
         );
+
+        mostrar.add(Jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 170, 280));
+
+        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        mostrar.add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
+
+        jLabel10.setText("Vida:");
+        mostrar.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
+
+        h1.setText("Usar Habilidad");
+
+        javax.swing.GroupLayout Jugador2Layout = new javax.swing.GroupLayout(Jugador2);
+        Jugador2.setLayout(Jugador2Layout);
+        Jugador2Layout.setHorizontalGroup(
+            Jugador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador2Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(h1)
+                .addGap(26, 26, 26))
+        );
+        Jugador2Layout.setVerticalGroup(
+            Jugador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jugador2Layout.createSequentialGroup()
+                .addContainerGap(218, Short.MAX_VALUE)
+                .addComponent(h1)
+                .addGap(39, 39, 39))
+        );
+
+        mostrar.add(Jugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 170, 280));
+
+        Versus.add(mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 510, 310));
 
         jPanel1.add(Versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
 
@@ -213,6 +326,11 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 230, -1));
 
         jButton5.setText("1vs1");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 230, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
@@ -421,9 +539,10 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                 DefaultMutableTreeNode nodoExistente = (DefaultMutableTreeNode) raiz.getChildAt(i);
                 int cantidadF = nodoExistente.getChildCount();
                 for (int j = 0; j < cantidadF; j++) {
-                    DefaultMutableTreeNode nodoLuchador = (DefaultMutableTreeNode) nodoExistente.getChildAt(i);
+                    DefaultMutableTreeNode nodoLuchador = (DefaultMutableTreeNode) nodoExistente.getChildAt(j);
                     if (nodoLuchador.toString().equals(luchador.getNombre())) {
                         DefaultMutableTreeNode nodoHabilidad = new DefaultMutableTreeNode(nuevaHabilidad);
+                        nodoLuchador.add(nodoHabilidad);
                     }
 
                 }
@@ -443,6 +562,8 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         ocultarPantallas(false);
         VerReino.setVisible(true);
+        DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
+        modeloArbol.reload();
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void arbolReinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arbolReinosMouseClicked
@@ -453,10 +574,26 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) arbolReinos.getSelectionPath().getLastPathComponent();
         Object eleccion = nodoSeleccionado.getUserObject();
-        if (eleccion instanceof Reino) {
-            Reino reinoEleg = (Reino) eleccion;
-            verInfo.setText(reinoEleg.toString());
-        } else if (eleccion instanceof Luchador) {
+        try {
+
+            String verifReino = (String) eleccion;
+            for (int i = 0; i < Reinos.size(); i++) {
+                if (Reinos.get(i).getNombre().equals(verifReino)) {
+                    verInfo.setText(Reinos.get(i).toString());
+                }
+            }
+
+        } catch (Exception E) {
+            if (eleccion instanceof Luchador) {
+                Luchador luchaEleg = (Luchador) eleccion;
+                verInfo.setText(luchaEleg.toString2());
+            } else if (eleccion instanceof Habilidad) {
+                Habilidad habiliEleg = (Habilidad) eleccion;
+                verInfo.setText(habiliEleg.toString());
+
+            }
+        }
+        if (eleccion instanceof Luchador) {
             Luchador luchaEleg = (Luchador) eleccion;
             verInfo.setText(luchaEleg.toString2());
         } else if (eleccion instanceof Habilidad) {
@@ -464,7 +601,39 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
             verInfo.setText(habiliEleg.toString());
 
         }
+
+
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        ocultarPantallas(false);
+        Versus.setVisible(true);
+    }//GEN-LAST:event_jButton5MouseClicked
+    public void Jugador1(boolean mostrar) {
+        h1.setEnabled(mostrar);
+        combo1.setEnabled(mostrar);
+        golpe.setEnabled(mostrar);
+
+    }
+
+    public void Jugador2(boolean mostrar) {
+        h2.setEnabled(mostrar);
+        combo2.setEnabled(mostrar);
+        golpe2.setEnabled(mostrar);
+    }
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        Jugador1(false);
+        Jugador2(false);
+        Luchador luchador = (Luchador) luchador1.getSelectedItem();
+        Luchador luchadorT = (Luchador) luchador2.getSelectedItem();
+        if (luchador.getVelocidad() > luchadorT.getVelocidad()) {
+            Jugador1(true);
+            Jugador2(false);
+        } else {
+            Jugador1(false);
+            Jugador2(true);
+        }
+    }//GEN-LAST:event_jButton8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -494,12 +663,20 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboLuchadores;
     private javax.swing.JPanel CrearHabilidad;
+    private javax.swing.JPanel Jugador1;
+    private javax.swing.JPanel Jugador2;
     private javax.swing.JPanel Torneo;
     private javax.swing.JPanel VerReino;
     private javax.swing.JPanel Versus;
     private javax.swing.JTree arbolReinos;
+    private javax.swing.JComboBox<String> combo1;
+    private javax.swing.JComboBox<String> combo2;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JTextField daño;
+    private javax.swing.JButton golpe;
+    private javax.swing.JButton golpe2;
+    private javax.swing.JButton h1;
+    private javax.swing.JButton h2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -507,16 +684,26 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> luchador1;
+    private javax.swing.JComboBox<String> luchador2;
+    private javax.swing.JPanel mostrar;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextArea verInfo;
     // End of variables declaration//GEN-END:variables
