@@ -289,6 +289,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 ArrayList<Luchador> luchadores = new ArrayList<>();
     ArrayList<Reino> Reinos = new ArrayList<>();
+    int contador=-1;
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         JFileChooser archivo = new JFileChooser();
         int opcion = archivo.showOpenDialog(this);
@@ -313,17 +314,33 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                     boolean verfReino = false;
 
                     for (int i = 0; i < Reinos.size(); i++) {
-                       
+
                         if (Reinos.get(i).getNombre().equals(datos[0])) {
+                            System.out.println("Reino encontrado: " + Reinos.get(i).getNombre());
                             verfReino = true;
                             Reino reinoElegido = Reinos.get(i);
-                            reinoElegido.añadirLuchadores(nuevoLuchador);
-                            DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
-                            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+                            ArrayList<Luchador> luchadores = reinoElegido.getLuchadores();
 
-                            DefaultMutableTreeNode nodoExistente = (DefaultMutableTreeNode) raiz.getChildAt(i+1);
-                            DefaultMutableTreeNode hijo = new DefaultMutableTreeNode(datos[0]);
-                            nodoExistente.add(hijo);
+                            boolean evitarRep = false;
+                            for (int j = 0; j < luchadores.size(); j++) {
+                                if (luchadores.get(j).getNombre().equals(nuevoLuchador.getNombre())) {
+                                    evitarRep = true;
+                                }
+
+                            }
+
+                            if (evitarRep == false) {
+                                reinoElegido.añadirLuchadores(nuevoLuchador);
+                                System.out.println("Luchador por añadir: " + nuevoLuchador.getNombre());
+                              
+                                DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
+                                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+
+                                DefaultMutableTreeNode nodoExistente = (DefaultMutableTreeNode) raiz.getChildAt(contador);
+                                DefaultMutableTreeNode hijo = new DefaultMutableTreeNode(nuevoLuchador);
+                                nodoExistente.add(hijo);
+                            }
+
                         } else {
 //                            Reino nuevoReino = new Reino(datos[0]);
 //                            Reinos.add(nuevoReino);
@@ -336,19 +353,20 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
 //                            nuevoNodo.add(hijo);
                         }
                     }
-                    boolean reinoCreado=false;
+                    boolean reinoCreado = false;
                     if (verfReino == false) {
                         Reino nuevoReino = new Reino(datos[0]);
                         Reinos.add(nuevoReino);
+                        contador++;
+                        System.out.println("Creacion de nuevo:"+nuevoReino);
                         nuevoReino.añadirLuchadores(nuevoLuchador);
                         Reinos.add(nuevoReino);
                         System.out.println(nuevoReino.Nombre);
-                        reinoCreado=true;
-                        
-                        
+                        reinoCreado = true;
+
                     }
-                    if(reinoCreado==true){
-                        
+                    if (reinoCreado == true) {
+
                         DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
                         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
                         DefaultMutableTreeNode nuevoReino = new DefaultMutableTreeNode(datos[0]);
