@@ -14,6 +14,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -28,8 +30,27 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        DefaultComboBoxModel modeloCombo=new DefaultComboBoxModel();
+        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
         ComboLuchadores.setModel(modeloCombo);
+        ocultarPantallas(false);
+        DefaultMutableTreeNode reino = new DefaultMutableTreeNode("Reinos");
+        DefaultMutableTreeNode Earthrealm = new DefaultMutableTreeNode("Earthrealm");
+        DefaultMutableTreeNode Outworld = new DefaultMutableTreeNode("Outworld");
+        DefaultMutableTreeNode Edenia = new DefaultMutableTreeNode("Edenia");
+        DefaultMutableTreeNode Netherrealm = new DefaultMutableTreeNode("Netherrealm");
+        reino.add(Earthrealm);
+        reino.add(Outworld);
+        reino.add(Edenia);
+        reino.add(Netherrealm);
+        DefaultTreeModel modeloArbol = new DefaultTreeModel(reino);
+        arbolReinos.setModel(modeloArbol);
+    }
+
+    public void ocultarPantallas(boolean mostrar) {
+        CrearHabilidad.setVisible(mostrar);
+        Torneo.setVisible(mostrar);
+        Versus.setVisible(mostrar);
+        VerReino.setVisible(mostrar);
     }
 
     /**
@@ -42,6 +63,15 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Torneo = new javax.swing.JPanel();
+        Versus = new javax.swing.JPanel();
+        VerReino = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        arbolReinos = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton7 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -67,6 +97,83 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Torneo.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout TorneoLayout = new javax.swing.GroupLayout(Torneo);
+        Torneo.setLayout(TorneoLayout);
+        TorneoLayout.setHorizontalGroup(
+            TorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+        TorneoLayout.setVerticalGroup(
+            TorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(Torneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
+
+        Versus.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout VersusLayout = new javax.swing.GroupLayout(Versus);
+        Versus.setLayout(VersusLayout);
+        VersusLayout.setHorizontalGroup(
+            VersusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+        VersusLayout.setVerticalGroup(
+            VersusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(Versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
+
+        VerReino.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setText("Ver Reinos");
+
+        jScrollPane1.setViewportView(arbolReinos);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jButton7.setText("Ver");
+
+        javax.swing.GroupLayout VerReinoLayout = new javax.swing.GroupLayout(VerReino);
+        VerReino.setLayout(VerReinoLayout);
+        VerReinoLayout.setHorizontalGroup(
+            VerReinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VerReinoLayout.createSequentialGroup()
+                .addGroup(VerReinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VerReinoLayout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(jLabel6))
+                    .addGroup(VerReinoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(VerReinoLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jButton7)))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        VerReinoLayout.setVerticalGroup(
+            VerReinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VerReinoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(VerReinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(VerReino, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
+
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/examen2p2_jorgerush/logoMK-1.png"))); // NOI18N
@@ -84,10 +191,20 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 230, -1));
 
         jButton3.setText("Crear Habilidad");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jButton3.addActionListener(this::jButton3ActionPerformed);
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 230, -1));
 
         jButton4.setText("Ver Reino");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 230, -1));
 
         jButton5.setText("1vs1");
@@ -127,21 +244,20 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ComboLuchadores, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(comboEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(daño, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
-                .addGap(0, 173, Short.MAX_VALUE))
+                .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ComboLuchadores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombre)
+                    .addComponent(daño)
+                    .addComponent(comboEstado, 0, 195, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(CrearHabilidadLayout.createSequentialGroup()
                 .addGap(237, 237, 237)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearHabilidadLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(237, Short.MAX_VALUE)
                 .addComponent(jButton6)
-                .addGap(210, 210, 210))
+                .addGap(231, 231, 231))
         );
         CrearHabilidadLayout.setVerticalGroup(
             CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,9 +278,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(CrearHabilidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(27, 27, 27)
                 .addComponent(jButton6)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         jPanel1.add(CrearHabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 540, 580));
@@ -186,15 +302,34 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                 String linea = lectura.readLine();
                 do {
                     String[] datos = linea.split(";");
-                    double vida=Double.parseDouble(datos[2]);
-                    double velocidad=Double.parseDouble(datos[4]);
-                    double probabilidad=Double.parseDouble(datos[5]);
-                    double bonoHabilidad=Double.parseDouble(datos[6]);
-                    Luchador nuevoLuchador=new Luchador (datos[0],datos[1],vida,datos[3],velocidad,probabilidad,bonoHabilidad);
+                    double vida = Double.parseDouble(datos[2]);
+                    double velocidad = Double.parseDouble(datos[4]);
+                    double probabilidad = Double.parseDouble(datos[5]);
+                    double bonoHabilidad = Double.parseDouble(datos[6]);
+                    Luchador nuevoLuchador = new Luchador(datos[0], datos[1], vida, datos[3], velocidad, probabilidad, bonoHabilidad);
                     luchadores.add(nuevoLuchador);
-                     DefaultComboBoxModel modeloCombo=(DefaultComboBoxModel)ComboLuchadores.getModel();
-                     modeloCombo.addElement(nuevoLuchador);
-                    linea=lectura.readLine();
+                    DefaultComboBoxModel modeloCombo = (DefaultComboBoxModel) ComboLuchadores.getModel();
+                    modeloCombo.addElement(nuevoLuchador);
+                    DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
+                    DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+                    if (datos[0].equals("Earthrealm")) {
+                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(0);
+                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
+                        hijo.add(nuevoNodo);
+                    } else if (datos[0].equals("Outworld")) {
+                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(1);
+                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
+                        hijo.add(nuevoNodo);
+                    } else if (datos[0].equals("Edenia")) {
+                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(2);
+                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
+                        hijo.add(nuevoNodo);
+                    } else if (datos[0].equals("Netherrealm")) {
+                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(3);
+                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
+                        hijo.add(nuevoNodo);
+                    }
+                    linea = lectura.readLine();
                 } while (linea != null);
             } catch (FileNotFoundException ex) {
                 System.getLogger(Main.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -210,26 +345,36 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        String nombreN=nombre.getText();
-        String dañoN=daño.getText();
-        if(nombreN.isEmpty()||dañoN.isEmpty()){
-            JOptionPane.showMessageDialog(this,"No puede dejar nada en blanco");
+        String nombreN = nombre.getText();
+        String dañoN = daño.getText();
+        if (nombreN.isEmpty() || dañoN.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar nada en blanco");
             return;
         }
-        
-        double dañoF=Double.parseDouble(dañoN);
-        String estado=(String)comboEstado.getSelectedItem();
-        
-        
-        Object luchadorElegido=ComboLuchadores.getSelectedItem();
-        if(luchadorElegido instanceof Luchador){
-            Habilidad nuevaHabilidad= new Habilidad(nombreN,dañoF,estado);
-            Luchador luchador=(Luchador)luchadorElegido;
+
+        double dañoF = Double.parseDouble(dañoN);
+        String estado = (String) comboEstado.getSelectedItem();
+
+        Object luchadorElegido = ComboLuchadores.getSelectedItem();
+        if (luchadorElegido instanceof Luchador) {
+            Habilidad nuevaHabilidad = new Habilidad(nombreN, dañoF, estado);
+            Luchador luchador = (Luchador) luchadorElegido;
             luchador.añadirHabilidades(nuevaHabilidad);
-            JOptionPane.showMessageDialog(this,"Habilidad exitosamente añadida");
+            JOptionPane.showMessageDialog(this, "Habilidad exitosamente añadida");
             return;
         }
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        ocultarPantallas(false);
+        CrearHabilidad.setVisible(true);
+
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        ocultarPantallas(false);
+        VerReino.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -259,6 +404,10 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboLuchadores;
     private javax.swing.JPanel CrearHabilidad;
+    private javax.swing.JPanel Torneo;
+    private javax.swing.JPanel VerReino;
+    private javax.swing.JPanel Versus;
+    private javax.swing.JTree arbolReinos;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JTextField daño;
     private javax.swing.JButton jButton1;
@@ -267,13 +416,18 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nombre;
     // End of variables declaration//GEN-END:variables
 }
