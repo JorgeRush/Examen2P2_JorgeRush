@@ -313,6 +313,7 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                     boolean verfReino = false;
 
                     for (int i = 0; i < Reinos.size(); i++) {
+                       
                         if (Reinos.get(i).getNombre().equals(datos[0])) {
                             verfReino = true;
                             Reino reinoElegido = Reinos.get(i);
@@ -320,7 +321,7 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                             DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
                             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
 
-                            DefaultMutableTreeNode nodoExistente = (DefaultMutableTreeNode) raiz.getChildAt(i);
+                            DefaultMutableTreeNode nodoExistente = (DefaultMutableTreeNode) raiz.getChildAt(i+1);
                             DefaultMutableTreeNode hijo = new DefaultMutableTreeNode(datos[0]);
                             nodoExistente.add(hijo);
                         } else {
@@ -340,7 +341,8 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                         Reino nuevoReino = new Reino(datos[0]);
                         Reinos.add(nuevoReino);
                         nuevoReino.añadirLuchadores(nuevoLuchador);
-                         Reinos.add(nuevoReino);
+                        Reinos.add(nuevoReino);
+                        System.out.println(nuevoReino.Nombre);
                         reinoCreado=true;
                         
                         
@@ -349,10 +351,10 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                         
                         DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
                         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
-                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(datos[0]);
-                        raiz.add(nuevoNodo);
-                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(Reinos.size());
-                        hijo.add(nuevoNodo);
+                        DefaultMutableTreeNode nuevoReino = new DefaultMutableTreeNode(datos[0]);
+                        raiz.add(nuevoReino);
+                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
+                        nuevoReino.add(nuevoNodo);
                     }
 
                     linea = lectura.readLine();
