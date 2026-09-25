@@ -13,7 +13,13 @@ import java.util.ArrayList;
 public class Reino {
     String Nombre;
     ArrayList <Luchador> Luchadores;
-
+    public Reino(String Nombre){
+        this.Nombre=Nombre;
+        Luchadores=new ArrayList<>();
+    }
+    public void añadirLuchadores(Luchador luchador){
+        Luchadores.add(luchador);
+    }
     public String getNombre() {
         return Nombre;
     }

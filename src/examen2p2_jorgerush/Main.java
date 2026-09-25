@@ -34,14 +34,7 @@ public class Main extends javax.swing.JFrame {
         ComboLuchadores.setModel(modeloCombo);
         ocultarPantallas(false);
         DefaultMutableTreeNode reino = new DefaultMutableTreeNode("Reinos");
-        DefaultMutableTreeNode Earthrealm = new DefaultMutableTreeNode("Earthrealm");
-        DefaultMutableTreeNode Outworld = new DefaultMutableTreeNode("Outworld");
-        DefaultMutableTreeNode Edenia = new DefaultMutableTreeNode("Edenia");
-        DefaultMutableTreeNode Netherrealm = new DefaultMutableTreeNode("Netherrealm");
-        reino.add(Earthrealm);
-        reino.add(Outworld);
-        reino.add(Edenia);
-        reino.add(Netherrealm);
+
         DefaultTreeModel modeloArbol = new DefaultTreeModel(reino);
         arbolReinos.setModel(modeloArbol);
     }
@@ -131,6 +124,11 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("Ver Reinos");
 
+        arbolReinos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                arbolReinosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(arbolReinos);
 
         jTextArea1.setColumns(20);
@@ -290,6 +288,7 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 ArrayList<Luchador> luchadores = new ArrayList<>();
+    ArrayList<Reino> Reinos = new ArrayList<>();
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         JFileChooser archivo = new JFileChooser();
         int opcion = archivo.showOpenDialog(this);
@@ -310,27 +309,55 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
                     luchadores.add(nuevoLuchador);
                     DefaultComboBoxModel modeloCombo = (DefaultComboBoxModel) ComboLuchadores.getModel();
                     modeloCombo.addElement(nuevoLuchador);
-                    DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
-                    DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
-                    if (datos[0].equals("Earthrealm")) {
-                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(0);
-                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
-                        hijo.add(nuevoNodo);
-                    } else if (datos[0].equals("Outworld")) {
-                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(1);
-                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
-                        hijo.add(nuevoNodo);
-                    } else if (datos[0].equals("Edenia")) {
-                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(2);
-                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
-                        hijo.add(nuevoNodo);
-                    } else if (datos[0].equals("Netherrealm")) {
-                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(3);
-                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoLuchador);
+
+                    boolean verfReino = false;
+
+                    for (int i = 0; i < Reinos.size(); i++) {
+                        if (Reinos.get(i).getNombre().equals(datos[0])) {
+                            verfReino = true;
+                            Reino reinoElegido = Reinos.get(i);
+                            reinoElegido.añadirLuchadores(nuevoLuchador);
+                            DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
+                            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+
+                            DefaultMutableTreeNode nodoExistente = (DefaultMutableTreeNode) raiz.getChildAt(i);
+                            DefaultMutableTreeNode hijo = new DefaultMutableTreeNode(datos[0]);
+                            nodoExistente.add(hijo);
+                        } else {
+//                            Reino nuevoReino = new Reino(datos[0]);
+//                            Reinos.add(nuevoReino);
+//                            nuevoReino.añadirLuchadores(nuevoLuchador);
+//                            DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
+//                            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+//                            DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(datos[0]);
+//                            raiz.add(nuevoNodo);
+//                            DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(Reinos.size() - 1);
+//                            nuevoNodo.add(hijo);
+                        }
+                    }
+                    boolean reinoCreado=false;
+                    if (verfReino == false) {
+                        Reino nuevoReino = new Reino(datos[0]);
+                        Reinos.add(nuevoReino);
+                        nuevoReino.añadirLuchadores(nuevoLuchador);
+                         Reinos.add(nuevoReino);
+                        reinoCreado=true;
+                        
+                        
+                    }
+                    if(reinoCreado==true){
+                        
+                        DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolReinos.getModel();
+                        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+                        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(datos[0]);
+                        raiz.add(nuevoNodo);
+                        DefaultMutableTreeNode hijo = (DefaultMutableTreeNode) raiz.getChildAt(Reinos.size());
                         hijo.add(nuevoNodo);
                     }
+
                     linea = lectura.readLine();
                 } while (linea != null);
+                JOptionPane.showMessageDialog(this, "Archivo exitosamente cargado al sistema :D");
             } catch (FileNotFoundException ex) {
                 System.getLogger(Main.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             } catch (IOException ex) {
@@ -375,6 +402,16 @@ ArrayList<Luchador> luchadores = new ArrayList<>();
         ocultarPantallas(false);
         VerReino.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void arbolReinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arbolReinosMouseClicked
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) arbolReinos.getSelectionPath().getLastPathComponent();
+        Object eleccion = nodoSeleccionado.getUserObject();
+        if (eleccion instanceof Reino) {
+
+        }
+
+
+    }//GEN-LAST:event_arbolReinosMouseClicked
 
     /**
      * @param args the command line arguments
